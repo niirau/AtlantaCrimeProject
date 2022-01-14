@@ -1,0 +1,17 @@
+ID Candidate,Candidate,ID Party,Party,ID Year,Year,Candidate Votes,Total Votes,Geography,ID Geography,Share
+"P00003392","Hillary Rodham Clinton","Democratic","Democratic",2016,"2016",297051,431391,"Fulton County, GA","05000US13121",68.85887744528746
+"P80001571","Donald J. Trump","Republican","Republican",2016,"2016",117783,431391,"Fulton County, GA","05000US13121",27.30307308219226
+"P99999999","Other","Other","Other",2016,"2016",16557,431391,"Fulton County, GA","05000US13121",3.8380494725202894
+"P80003338","Barack Obama","Democratic","Democratic",2012,"2012",255470,397413,"Fulton County, GA","05000US13121",64.28325193186937
+"P80003353","Mitt Romney","Republican","Republican",2012,"2012",137124,397413,"Fulton County, GA","05000US13121",34.50415562651448
+"P99999999","Other","Other","Other",2012,"2012",4819,397413,"Fulton County, GA","05000US13121",1.2125924416161524
+"P80002801","John S. Mccain","Republican","Republican",2008,"2008",130136,405628,"Fulton County, GA","05000US13121",32.08259784827477
+"P80003338","Barack Obama","Democratic","Democratic",2008,"2008",272000,405628,"Fulton County, GA","05000US13121",67.05651483625391
+"P99999999","Other","Other","Other",2008,"2008",3492,405628,"Fulton County, GA","05000US13121",0.8608873154713186
+"P00003335","George W Bush","Republican","Republican",2004,"2004",134372,336024,"Fulton County, GA","05000US13121",39.98881032307216
+"P80000235","John F Kerry","Democratic","Democratic",2004,"2004",199436,336024,"Fulton County, GA","05000US13121",59.351712972882886
+"P99999999","Other","Other","Other",2004,"2004",2216,336024,"Fulton County, GA","05000US13121",0.6594767040449492
+"P00003335","George W Bush","Republican","Republican",2000,"2000",104870,263212,"Fulton County, GA","05000US13121",39.84240840083279
+"P20000527","Ralph Nader","Green","Green",2000,"2000",1264,263212,"Fulton County, GA","05000US13121",0.48022126650760605
+"P80000912","Al Gore","Democratic","Democratic",2000,"2000",152039,263212,"Fulton County, GA","05000US13121",57.762943938726195
+"P99999999","Other","Other","Other",2000,"2000",5039,263212,"Fulton County, GA","05000US13121",1.9144263939334074

@@ -21,6 +21,8 @@ else:
     password = "Password1"
 
 url = "https://datausa.io/api/data?measure=Household%20Income%20by%20Race,Household%20Income%20by%20Race%20Moe&drilldowns=Race&Geography=16000US1304000:parents,16000US1304000,16000US1304000:similar"
+r = requests.get(url)
+
 connection_url = sqlalchemy.engine.URL.create(
     "mssql+pyodbc",
     username="sa",
@@ -33,7 +35,6 @@ connection_url = sqlalchemy.engine.URL.create(
     }
 )
 engine = sqlalchemy.create_engine(connection_url)
-r = requests.get(url)
 logging.debug("connection status code: %s", r.status_code)
 
 # crime = pd.read_csv('datasets/atlcrime.csv')

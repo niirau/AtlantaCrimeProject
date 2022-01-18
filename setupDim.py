@@ -1,6 +1,8 @@
 import time
 import pandas as pd
+import sqlalchemy
 import logging
+
 
 
 def create_dimDate(start="2009-01-01", end="2017-12-31"):
@@ -14,30 +16,56 @@ def create_dimDate(start="2009-01-01", end="2017-12-31"):
     dimDate['month'] = date_range.month_name(locale='English')
     dimDate['Weekday'] = date_range.day_name(locale='English')
     dimDate['datekey'] = dimDate.year * 10000 + dimDate.month_no * 100 + dimDate.day_no
+    dimDate['datekey'] = dimDate['datekey'].astype(str)
     # dimDate['datekey'] = dimDate.datekey.to_string()
+
 
     print(dimDate.columns)
     return dimDate
 
 
-def writeToDB(tablename, overwrite='replace', test=False):
-    pass
+def writeToDB(tablename, df, if_exists='replace', test=False):
+    database = "CrimeTimeDW"
+    if test:
+        username = 'sa'
+        host = 'localhost'
+        password = 'Strong password'
+    else:
+        username = "awdemo"
+        host = r"87.92.13.122\DESKTOP-FL66USV,5019"
+        password = r"Atlanta2022"
+
+    connection_url = sqlalchemy.engine.URL.create(
+        "mssql+pyodbc",
+        username=username,
+        password=password,
+        host=host,
+        database="CrimeTimeDW",
+        query={
+            "driver": "ODBC Driver 17 for SQL Server",
+            # "authentication": "ActiveDirectoryIntegrated",
+        }
+    )
+    engine = sqlalchemy.create_engine(connection_url)
+    logging.info("connecting host: %s  DB: %s", host, database)
+    try:
+        df.to_sql(tablename, con=engine, if_exists=if_exists)
+    except Exception as e:
+        print("error:")
+        print(e)
+        logging.warning("fail to write to %s", tablename)
+    else:
+        logging.info("Finished writing to %s", tablename)
 
 
 if __name__ == "__main__":
     test = False
-
-    print(create_dimDate())
-
     logging.basicConfig(
         filename='loading.log',
         encoding='utf-8',
         level=logging.DEBUG,
         format="%(asctime)s %(levelname)s: %(message)s")
 
-    if test:
-        host = 'localhost'
-        password = 'Strong password'
-    else:
-        host = "87.92.13.122\DESKTOP-FL66USV,1433"
-        password = "Password1"
+    dimDate = create_dimDate()
+    print(dimDate.dtypes)
+    writeToDB('dimDate', dimDate, test=test)

@@ -11,14 +11,15 @@ def create_dimDate(start="2009-01-01", end="2017-12-31"):
     dimDate['date'] = date_range
     dimDate['year'] = date_range.year
     dimDate['month_no'] = date_range.month
-    dimDate['week'] = date_range.isocalendar().week
+    # dimDate['week'] = date_range.isocalendar().week.astype(int)
     dimDate['day_no'] = date_range.day
     dimDate['month'] = date_range.month_name(locale='English')
     dimDate['Weekday'] = date_range.day_name(locale='English')
     dimDate['datekey'] = dimDate.year * 10000 + dimDate.month_no * 100 + dimDate.day_no
     dimDate['datekey'] = dimDate['datekey'].astype(str)
+    # print(date_range.isocalendar().week)
+    # print(dimDate.week)
     # dimDate['datekey'] = dimDate.datekey.to_string()
-
 
     print(dimDate.columns)
     return dimDate
@@ -61,7 +62,7 @@ def writeToDB(tablename, df, if_exists='replace', test=False, pwd=""):
 
 
 if __name__ == "__main__":
-    test = False
+    test = True
     logging.basicConfig(
         filename='loading.log',
         encoding='utf-8',
@@ -70,4 +71,4 @@ if __name__ == "__main__":
 
     dimDate = create_dimDate()
     print(dimDate.dtypes)
-    writeToDB('dimDate', dimDate, test=test)
+    #writeToDB('dimDate', dimDate, test=test)

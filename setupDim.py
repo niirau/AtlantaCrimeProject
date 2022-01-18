@@ -24,16 +24,18 @@ def create_dimDate(start="2009-01-01", end="2017-12-31"):
     return dimDate
 
 
-def writeToDB(tablename, df, if_exists='replace', test=False):
+def writeToDB(tablename, df, if_exists='replace', test=False, pwd=""):
     database = "CrimeTimeDW"
     if test:
         username = 'sa'
         host = 'localhost'
-        password = 'Strong password'
+        if pwd == "":
+            password = 'Strong password'
     else:
         username = "awdemo"
         host = r"87.92.13.122\DESKTOP-FL66USV,5019"
-        password = r"Atlanta2022"
+        if pwd == "":
+            password = r"Atlanta2022"
 
     connection_url = sqlalchemy.engine.URL.create(
         "mssql+pyodbc",
